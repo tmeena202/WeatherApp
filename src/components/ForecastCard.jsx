@@ -18,7 +18,7 @@ const ForecastCard = ({ forecastData }) => {
         display: "flex",
         alignItems: "center",
         mb: 2,
-        p: 2,
+        p: 1,
         background: "linear-gradient(to right, #e0eafc, #cfdef3)", // Updated gradient colors
         borderRadius: 8,
         boxShadow: "0 4px 8px rgba(0,0,0,0.1)", // Softened box shadow
@@ -30,7 +30,7 @@ const ForecastCard = ({ forecastData }) => {
           alignItems: "center",
           justifyContent: "space-between",
           width: "100%",
-          padding: 0,
+          paddingTop: 2,
         }}
       >
         <Box
@@ -60,13 +60,13 @@ const ForecastCard = ({ forecastData }) => {
           <Typography variant="h6" sx={{ ml: 2 }}>
             {mintemp_c}°C / {maxtemp_c}°C
           </Typography>
-          <Typography variant="body2" sx={{ ml: 2, fontStyle: "italic" }}>
+          <Typography variant="body1" sx={{ ml: 6, fontStyle: "italic" }}>
             {text}
           </Typography>
         </Box>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+        {/* <Box sx={{ display: "flex", alignItems: "center" }}>
           <ArrowDropDownIcon sx={{ fontSize: "2rem", color: "gray" }} />
-        </Box>
+        </Box> */}
       </CardContent>
     </Card>
   );

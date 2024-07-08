@@ -17,7 +17,9 @@ const WeatherInfo = () => {
         `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${WEATHER_APIKEY}&units=metric`
       );
       if (!response.ok) {
-        throw new Error("Failed to fetch weather data");
+        throw new Error(
+          "Failed to fetch weather data, Please Enter valid city name. \n Kindly Refresh, If there is problem."
+        );
       }
       const data = await response.json();
       setWeatherData(data);
@@ -38,7 +40,19 @@ const WeatherInfo = () => {
         Weather Information
       </Typography>
       {error ? (
-        <Typography variant="body1" color="error" sx={{ textAlign: "center" }}>
+        <Typography
+          variant="h6"
+          color="error"
+          sx={{
+            mx: 1,
+            textAlign: "center",
+            backgroundColor: "rgba(0, 0, 0, 0.7)",
+            color: "tomato",
+            padding: "10px 20px",
+            borderRadius: "8px",
+            display: "inline-block",
+          }}
+        >
           {error}
         </Typography>
       ) : (

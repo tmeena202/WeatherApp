@@ -60,6 +60,7 @@ const Header = () => {
     setInputValue(cityWithCountry);
     setSuggestions([]);
     dispatch(setCity(cityWithCountry));
+    handleSubmit(cityWithCountry);
   };
 
   const handleFocus = () => {
@@ -70,21 +71,32 @@ const Header = () => {
     setIsFocused(false);
   };
 
-  const handleSubmit = () => {
-    dispatch(setCity(inputValue));
+  const handleSubmit = (city) => {
+    const cityToSearch = city || inputValue;
+    dispatch(setCity(cityToSearch));
+    // Trigger the search action if needed
+  };
+
+  const handleRefresh = () => {
+    window.location.reload();
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#2196f3" }}>
+    <AppBar position="static" sx={{ backgroundColor: "PaleVioletRed" }}>
       <Toolbar
         sx={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "0 16px", // Adjusted padding
+          padding: "0 16px",
         }}
       >
-        <Typography variant="h6" component="div" sx={{ color: "white" }}>
+        <Typography
+          variant="h6"
+          component="div"
+          sx={{ color: "white", cursor: "pointer" }}
+          onClick={handleRefresh}
+        >
           Weather Dashboard
         </Typography>
         <Box
@@ -128,7 +140,7 @@ const Header = () => {
             variant="contained"
             color="primary"
             size="medium"
-            onClick={handleSubmit}
+            onClick={() => handleSubmit(inputValue)}
             sx={{
               borderRadius: "4px",
               backgroundColor: "#3f51b5",

@@ -3,6 +3,7 @@ import Header from "./Header";
 import WeatherInfo from "./WeatherInfo";
 import Forecast from "./Forecast";
 import HourlyForecast from "./HourlyForecast";
+import HourlyForecastChart from "./HourlyForecastChart";
 
 const WeatherContainer = () => {
   return (
@@ -17,6 +18,7 @@ const WeatherContainer = () => {
           <Forecast />
         </Box>
       </Box>
+      <HourlyForecastChart></HourlyForecastChart>
     </div>
   );
 };
