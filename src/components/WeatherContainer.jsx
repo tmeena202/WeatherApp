@@ -15,9 +15,7 @@ const WeatherContainer = () => {
             <HourlyForecast />
           </Box>
         </Box>
-        <Box sx={{ paddingLeft: 18 }}>
-          {/* <Typography variant="h6">7 days forecast</Typography> */}
-          {/* Your seven-day forecast component here */}
+        <Box sx={{ paddingLeft: 15 }}>
           <Forecast />
         </Box>
       </Box>

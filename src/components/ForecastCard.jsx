@@ -9,15 +9,7 @@ const ForecastCard = ({ forecastData }) => {
 
   const forecastDate = new Date(date);
   const day = forecastDate.getDay();
-  const daysOfWeek = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const dayName = daysOfWeek[day];
 
   return (
@@ -26,8 +18,10 @@ const ForecastCard = ({ forecastData }) => {
         display: "flex",
         alignItems: "center",
         mb: 2,
-        p: 0,
-        background: "lightgray",
+        p: 2,
+        background: "linear-gradient(to right, #e0eafc, #cfdef3)",
+        borderRadius: 2,
+        boxShadow: 3,
       }}
     >
       <CardContent
@@ -36,6 +30,7 @@ const ForecastCard = ({ forecastData }) => {
           alignItems: "center",
           justifyContent: "space-between",
           width: "100%",
+          padding: 0,
         }}
       >
         <Box
@@ -43,9 +38,13 @@ const ForecastCard = ({ forecastData }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-evenly",
+            flex: 1,
           }}
         >
-          <Typography variant="body1" sx={{ marginRight: 2 }}>
+          <Typography
+            variant="body1"
+            sx={{ marginRight: 2, fontWeight: "bold" }}
+          >
             {dayName},{" " + date}
           </Typography>
           <CardMedia
@@ -55,17 +54,18 @@ const ForecastCard = ({ forecastData }) => {
             sx={{
               width: 40,
               height: 40,
-              borderRadius: "50%",
-              objectFit: "cover",
+              marginRight: 2,
             }}
           />
-          <Typography variant="body1" sx={{ paddingRight: 2 }}>
-            {mintemp_c}/{maxtemp_c}°C
+          <Typography variant="h6" sx={{ marginRight: 2 }}>
+            {mintemp_c}°C / {maxtemp_c}°C
           </Typography>
-          <Typography variant="body2">{text}</Typography>
+          <Typography variant="body2" sx={{ fontStyle: "italic" }}>
+            {text}
+          </Typography>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <ArrowDropDownIcon sx={{ fontSize: "large" }} />
+          <ArrowDropDownIcon sx={{ fontSize: "2rem", color: "gray" }} />
         </Box>
       </CardContent>
     </Card>
