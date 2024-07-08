@@ -12,10 +12,10 @@ import {
   ListItemText,
   Paper,
 } from "@mui/material";
-import { CITIES_API_URL, options } from "../utils/constants";
-import debounce from "lodash.debounce";
 import { useDispatch, useSelector } from "react-redux";
 import { setCity } from "../utils/citySlice";
+import debounce from "lodash.debounce";
+import { options } from "../utils/constants";
 
 const Header = () => {
   const [inputValue, setInputValue] = useState("");
@@ -48,7 +48,7 @@ const Header = () => {
   const handleInputChange = (event) => {
     const query = event.target.value;
     setInputValue(query);
-    if (query.length > 3) {
+    if (query.length > 2) {
       debouncedGetCitiesData(query);
     } else {
       setSuggestions([]);
@@ -75,12 +75,13 @@ const Header = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: "#2196f3" }}>
       <Toolbar
         sx={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          padding: "0 16px", // Adjusted padding
         }}
       >
         <Typography variant="h6" component="div" sx={{ color: "white" }}>
@@ -88,14 +89,16 @@ const Header = () => {
         </Typography>
         <Box
           sx={{
-            position: "relative",
             display: "flex",
             alignItems: "center",
+            width: "60%",
+            maxWidth: "600px",
+            position: "relative",
           }}
         >
           <TextField
             variant="outlined"
-            placeholder="Search for any city name, Enter 3 alphabets to see suggestions"
+            placeholder="Search for any city (min. 3 characters)"
             size="small"
             value={inputValue}
             onChange={handleInputChange}
@@ -103,32 +106,51 @@ const Header = () => {
             onBlur={handleBlur}
             onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
             sx={{
-              width: "40vw",
               flex: 1,
-              marginRight: 1,
-              background: "white",
-              borderRadius: "10px",
-              border: "2px solid black",
+              marginRight: "8px",
+              borderRadius: "4px",
+              backgroundColor: "white",
               "& .MuiOutlinedInput-root": {
-                "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                "& fieldset": {
+                  borderColor: "transparent",
+                },
+                "&:hover fieldset": {
+                  borderColor: "transparent",
+                },
+                "&.Mui-focused fieldset": {
                   borderColor: "transparent",
                 },
               },
-              "& .MuiInputBase-input": {
-                // Target the input element
-                color: "",
-              },
             }}
           />
+          <Button
+            startIcon={<SearchIcon />}
+            variant="contained"
+            color="primary"
+            size="medium"
+            onClick={handleSubmit}
+            sx={{
+              borderRadius: "4px",
+              backgroundColor: "#3f51b5",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "#1e88e5",
+              },
+            }}
+          >
+            Search
+          </Button>
           {isFocused && suggestions.length > 0 && (
             <Paper
               sx={{
-                background: "GhostWhite",
                 position: "absolute",
-                width: "40vw",
-                top: "100%",
+                top: "calc(100% + 8px)",
                 left: 0,
-                zIndex: 10,
+                width: "100%",
+                zIndex: 1,
+                borderRadius: "4px",
+                boxShadow: "0 4px 8px rgba(0,0,0,0.2)",
+                backgroundColor: "white",
                 maxHeight: "200px",
                 overflowY: "auto",
               }}
@@ -136,18 +158,16 @@ const Header = () => {
               <List>
                 {suggestions.map((suggestion) => (
                   <ListItem
+                    key={suggestion.id}
+                    button
+                    onClick={() => handleSuggestionClick(suggestion)}
                     sx={{
                       "&:hover": {
-                        backgroundColor: "lightblue",
+                        backgroundColor: "#f0f0f0",
                       },
-                      borderBottom: 1,
                     }}
-                    button
-                    key={suggestion.id}
-                    onClick={() => handleSuggestionClick(suggestion)}
                   >
                     <ListItemText
-                      sx={{}}
                       primary={`${suggestion.city}, ${suggestion.country}`}
                     />
                   </ListItem>
@@ -155,25 +175,6 @@ const Header = () => {
               </List>
             </Paper>
           )}
-          {/* {error && (
-            <Typography
-              variant="body2"
-              color="error"
-              sx={{ position: "absolute", top: "100%", left: 0 }}
-            >
-              {error}
-            </Typography>
-          )} */}
-          <Button
-            startIcon={<SearchIcon />}
-            sx={{ background: "white", color: "black" }}
-            variant="contained"
-            color="inherit"
-            size="mid"
-            onClick={handleSubmit}
-          >
-            Search
-          </Button>
         </Box>
       </Toolbar>
     </AppBar>

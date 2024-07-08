@@ -19,9 +19,9 @@ const ForecastCard = ({ forecastData }) => {
         alignItems: "center",
         mb: 2,
         p: 2,
-        background: "linear-gradient(to right, #e0eafc, #cfdef3)",
-        borderRadius: 2,
-        boxShadow: 3,
+        background: "linear-gradient(to right, #e0eafc, #cfdef3)", // Updated gradient colors
+        borderRadius: 8,
+        boxShadow: "0 4px 8px rgba(0,0,0,0.1)", // Softened box shadow
       }}
     >
       <CardContent
@@ -37,15 +37,14 @@ const ForecastCard = ({ forecastData }) => {
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-evenly",
             flex: 1,
           }}
         >
           <Typography
             variant="body1"
-            sx={{ marginRight: 2, fontWeight: "bold" }}
+            sx={{ fontWeight: "bold", flexShrink: 0 }}
           >
-            {dayName},{" " + date}
+            {dayName}, {date}
           </Typography>
           <CardMedia
             component="img"
@@ -54,13 +53,14 @@ const ForecastCard = ({ forecastData }) => {
             sx={{
               width: 40,
               height: 40,
-              marginRight: 2,
+              ml: 2,
+              flexShrink: 0,
             }}
           />
-          <Typography variant="h6" sx={{ marginRight: 2 }}>
+          <Typography variant="h6" sx={{ ml: 2 }}>
             {mintemp_c}°C / {maxtemp_c}°C
           </Typography>
-          <Typography variant="body2" sx={{ fontStyle: "italic" }}>
+          <Typography variant="body2" sx={{ ml: 2, fontStyle: "italic" }}>
             {text}
           </Typography>
         </Box>

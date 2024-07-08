@@ -8,14 +8,12 @@ const WeatherContainer = () => {
   return (
     <div>
       <Header />
-      <Box sx={{ display: "flex" }}>
-        <Box sx={{ display: "flex", flexDirection: "column", paddingLeft: 15 }}>
+      <Box sx={{ display: "flex", justifyContent: "center", marginTop: 2 }}>
+        <Box sx={{ maxWidth: "600px", width: "50%", paddingRight: 2 }}>
           <WeatherInfo />
-          <Box>
-            <HourlyForecast />
-          </Box>
+          <HourlyForecast />
         </Box>
-        <Box sx={{ paddingLeft: 15 }}>
+        <Box sx={{ flex: 1, paddingLeft: 2 }}>
           <Forecast />
         </Box>
       </Box>
