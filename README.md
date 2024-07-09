@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Weather App
+I created a weather App with React.js, Redux toolkit, Chat.js and Material UI.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Installation
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
+`npm start`
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Feature in this app.
 
-### `npm test`
+``1. Search Functionality``
+- Implemented a search bar enabling users to search for cities, with real-time weather data fetched via a weather API. Integrated dynamic __*search suggestions*__ based on user input to enhance usability. And used debouncing to reduce API calls.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+``2. Display Current Weather``
 
-### `npm run build`
+- Displayed current weather information (temperature, humidity, wind speed, weather conditions) for each searched city, providing detailed weather updates.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+``3. 7-Day Forecast``
+- Implemented a 7-day weather forecast display for the selected city, showing daily temperatures, weather conditions, and precipitation details to provide comprehensive weather information.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+``4. Data Visualization``
+- Implemented __*temperature trend charts*__ using Chart.js to visualize 1-day hourly forecasts, providing intuitive graphs of temperature trends over time for enhanced weather data presentation.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+``5. Responsive Design``
+- Ensured application responsiveness across various screen sizes, including mobile devices, utilizing Material-UI's grid system and responsive utilities for a seamless user experience on all devices.
 
-### `npm run eject`
+``6. Error Handling``
+- Implemented graceful error handling to display appropriate messages when weather data cannot be fetched, including handling edge cases like invalid city names to ensure robust application performance and user experience.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Structure of this app
+```
+├── public/                       # Public assets and index.html  
+├── src/                          # Source files  
+│   ├── components/               # React components  
+│   │   ├── Header.js             # Application header component  
+│   │   ├── WeatherInfo.js        #  Component displaying weather information  
+│   │   ├── Forecast.js           # Component displaying 7-day forecast  
+│   │   ├── HourlyForecast.js     # Component displaying hourly forecast
+│   ├── utils/                    # Utility functions and constants  
+│   │   ├── constants.js          # API keys and constants  
+│   │   ├── hourlyForecastSlice.js  # Redux slice for hourly forecast  
+│   ├── App.js                    # Main application component  
+│   ├── index.js                  # Entry point  
+├── .gitignore                    # Git ignore  
+├── package.json                  # Package.json with dependencies  
+├── README.md                     #  Project README file  
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
