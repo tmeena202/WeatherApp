@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 const Forecast = () => {
   const cityName = useSelector((store) => store.city.name);
-
   const [forecastData, setForecastData] = useState(null);
 
   const getForecastData = async (cityName) => {
@@ -23,7 +22,6 @@ const Forecast = () => {
 
       const jsonData = await response.json();
       setForecastData(jsonData.forecast.forecastday);
-      console.log(jsonData);
     } catch (error) {
       console.error("Error fetching forecast data:", error);
     }
@@ -36,16 +34,16 @@ const Forecast = () => {
   return (
     <>
       {forecastData && (
-        <Box sx={{ width: "600px", marginTop: 5 }}>
+        <Box sx={{ maxWidth: "100%", marginTop: 5, padding: "0 10px" }}>
           <Typography
             variant="h5"
             sx={{ textAlign: "center", marginBottom: 3 }}
           >
             7 Day Forecast
           </Typography>
-          {forecastData.map((forecast, index) => {
-            return <ForecastCard key={index * 12} forecastData={forecast} />;
-          })}
+          {forecastData.map((forecast, index) => (
+            <ForecastCard key={index * 12} forecastData={forecast} />
+          ))}
         </Box>
       )}
     </>

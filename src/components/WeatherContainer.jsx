@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import Header from "./Header";
 import WeatherInfo from "./WeatherInfo";
 import Forecast from "./Forecast";
@@ -9,16 +9,24 @@ const WeatherContainer = () => {
   return (
     <div>
       <Header />
-      <Box sx={{ display: "flex", justifyContent: "center", marginTop: 2 }}>
-        <Box sx={{ maxWidth: "600px", width: "50%", paddingRight: 2 }}>
-          <WeatherInfo />
-          <HourlyForecast />
-        </Box>
-        <Box sx={{ flex: 1, paddingLeft: 2 }}>
-          <Forecast />
-        </Box>
+      <Box sx={{ marginTop: 0, padding: 1 }}>
+        <Grid container spacing={2} justifyContent="center">
+          <Grid item xs={12} md={6}>
+            <Box sx={{ maxWidth: "600px", width: "100%" }}>
+              <WeatherInfo />
+              <HourlyForecast />
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ width: "100%" }}>
+              <Forecast />
+            </Box>
+          </Grid>
+        </Grid>
       </Box>
-      <HourlyForecastChart></HourlyForecastChart>
+      <Box sx={{ marginTop: 2 }}>
+        <HourlyForecastChart />
+      </Box>
     </div>
   );
 };

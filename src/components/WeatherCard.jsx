@@ -27,9 +27,8 @@ const WeatherCard = ({ weatherData }) => {
         borderRadius: 10,
         margin: "20px auto",
         backgroundColor: "lightblue",
-        // background: "rgba(255, 255, 255, 0.1)",
         boxShadow: "0px 8px 16px rgba(0, 0, 0, 0.3)",
-        color: "white",
+        color: "black",
       }}
     >
       <CardHeader
@@ -60,8 +59,9 @@ const WeatherCard = ({ weatherData }) => {
         <Divider sx={{ marginY: 2 }} />
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "10px",
             marginBottom: 1,
           }}
         >
@@ -72,14 +72,6 @@ const WeatherCard = ({ weatherData }) => {
           <Typography variant="body1">
             <OpacityIcon sx={{ marginRight: 1 }} /> Humidity: {humidity}%
           </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginBottom: 1,
-          }}
-        >
           <Typography variant="body1">
             <SpeedIcon sx={{ marginRight: 1 }} /> Pressure: {pressure} hPa
           </Typography>
